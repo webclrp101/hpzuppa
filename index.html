@@ -425,18 +425,31 @@
             });
 
             // --- Testimonial Carousel ---
+            const testimonialCarousel = document.getElementById('testimonial-carousel'); // Get the carousel container
             const testimonialTrack = document.getElementById('testimonial-track');
             const prevButton = document.getElementById('prev-testimonial');
             const nextButton = document.getElementById('next-testimonial');
             let currentIndex = 0;
             const testimonials = testimonialTrack.children; // Get all testimonial cards
             const totalTestimonials = testimonials.length;
+            let autoPlayInterval;
             
             function updateCarousel() {
                 const testimonialWidth = testimonials[0] ? testimonials[0].offsetWidth : 0; // Width of a single testimonial
                 if (testimonialWidth) { // Ensure width is not zero
                     testimonialTrack.style.transform = `translateX(-${currentIndex * testimonialWidth}px)`;
                 }
+            }
+
+            function startAutoPlay() {
+                autoPlayInterval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % totalTestimonials;
+                    updateCarousel();
+                }, 3000); // Change slide every 3 seconds
+            }
+
+            function stopAutoPlay() {
+                clearInterval(autoPlayInterval);
             }
 
             nextButton.addEventListener('click', () => {
@@ -453,8 +466,13 @@
             window.addEventListener('resize', () => {
                 updateCarousel(); // Just re-update, width will be calculated inside
             });
+            
+            // Pause on hover
+            testimonialCarousel.addEventListener('mouseenter', stopAutoPlay);
+            testimonialCarousel.addEventListener('mouseleave', startAutoPlay);
 
             updateCarousel(); // Initial positioning
+            startAutoPlay(); // Start the autoplay
 
 
         });
