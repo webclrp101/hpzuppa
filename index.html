@@ -90,37 +90,30 @@
 <body class="bg-brand-cream text-brand-dark">
 
     <!-- Floating Sidebar Navigation (Always visible, expands on hover) -->
-    <div id="floating-sidebar" class="fixed inset-y-1/2 -translate-y-1/2 right-0 w-fit p-2 rounded-full bg-brand-dark/50 hover:bg-brand-dark/75 transition-all duration-300 z-50 flex flex-col items-center justify-center space-y-4">
+    <div id="floating-sidebar" class="fixed inset-y-1/2 -translate-y-1/2 right-0 w-fit p-2 rounded-l-full bg-brand-dark/50 hover:bg-brand-dark/75 transition-all duration-300 z-50 flex flex-col items-center justify-center space-y-4">
         <span class="hidden text-sm text-white">Menu</span>
         <div id="nav-items-wrapper">
-            <ul class="flex flex-col space-y-2 items-center">
-                <li><a href="#home" class="flex items-center justify-center w-12 h-12 rounded-full bg-white/20 hover:bg-white text-brand-orange hover:text-white transition-all duration-300 relative overflow-hidden group">
-                    <span class="text-xl font-bold z-10">H</span>
-                    <span class="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-3 py-1 bg-white text-brand-dark rounded-full text-sm shadow-md whitespace-nowrap opacity-0 transition-all duration-300 group-hover:left-14 group-hover:opacity-100 group-focus:left-14 group-focus:opacity-100 group-active:left-14 group-active:opacity-100">Home</span>
+            <ul class="flex flex-col space-y-2">
+                <li><a href="#home" class="flex items-center justify-center px-4 py-3 rounded-full bg-white/20 hover:bg-white text-brand-orange hover:text-white transition-all duration-300 group">
+                    <span class="text-sm font-semibold">Home</span>
                 </a></li>
-                <li><a href="#tentang" class="flex items-center justify-center w-12 h-12 rounded-full bg-white/20 hover:bg-white text-brand-orange hover:text-white transition-all duration-300 relative overflow-hidden group">
-                    <span class="text-xl font-bold z-10">T</span>
-                    <span class="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-3 py-1 bg-white text-brand-dark rounded-full text-sm shadow-md whitespace-nowrap opacity-0 transition-all duration-300 group-hover:left-14 group-hover:opacity-100 group-focus:left-14 group-focus:opacity-100 group-active:left-14 group-active:opacity-100">Tentang</span>
+                <li><a href="#tentang" class="flex items-center justify-center px-4 py-3 rounded-full bg-white/20 hover:bg-white text-brand-orange hover:text-white transition-all duration-300 group">
+                    <span class="text-sm font-semibold">Tentang</span>
                 </a></li>
-                <li><a href="#menu" class="flex items-center justify-center w-12 h-12 rounded-full bg-white/20 hover:bg-white text-brand-orange hover:text-white transition-all duration-300 relative overflow-hidden group">
-                    <span class="text-xl font-bold z-10">M</span>
-                    <span class="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-3 py-1 bg-white text-brand-dark rounded-full text-sm shadow-md whitespace-nowrap opacity-0 transition-all duration-300 group-hover:left-14 group-hover:opacity-100 group-focus:left-14 group-focus:opacity-100 group-active:left-14 group-active:opacity-100">Menu</span>
+                <li><a href="#menu" class="flex items-center justify-center px-4 py-3 rounded-full bg-white/20 hover:bg-white text-brand-orange hover:text-white transition-all duration-300 group">
+                    <span class="text-sm font-semibold">Menu</span>
                 </a></li>
-                <li><a href="#keunggulan" class="flex items-center justify-center w-12 h-12 rounded-full bg-white/20 hover:bg-white text-brand-orange hover:text-white transition-all duration-300 relative overflow-hidden group">
-                    <span class="text-xl font-bold z-10">K</span>
-                    <span class="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-3 py-1 bg-white text-brand-dark rounded-full text-sm shadow-md whitespace-nowrap opacity-0 transition-all duration-300 group-hover:left-14 group-hover:opacity-100 group-focus:left-14 group-focus:opacity-100 group-active:left-14 group-active:opacity-100">Keunggulan</span>
+                <li><a href="#keunggulan" class="flex items-center justify-center px-4 py-3 rounded-full bg-white/20 hover:bg-white text-brand-orange hover:text-white transition-all duration-300 group">
+                    <span class="text-sm font-semibold">Keunggulan</span>
                 </a></li>
-                <li><a href="#testimoni" class="flex items-center justify-center w-12 h-12 rounded-full bg-white/20 hover:bg-white text-brand-orange hover:text-white transition-all duration-300 relative overflow-hidden group">
-                    <span class="text-xl font-bold z-10">T</span>
-                    <span class="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-3 py-1 bg-white text-brand-dark rounded-full text-sm shadow-md whitespace-nowrap opacity-0 transition-all duration-300 group-hover:left-14 group-hover:opacity-100 group-focus:left-14 group-focus:opacity-100 group-active:left-14 group-active:opacity-100">Testimoni</span>
+                <li><a href="#testimoni" class="flex items-center justify-center px-4 py-3 rounded-full bg-white/20 hover:bg-white text-brand-orange hover:text-white transition-all duration-300 group">
+                    <span class="text-sm font-semibold">Testimoni</span>
                 </a></li>
-                <li><a href="#gallery" class="flex items-center justify-center w-12 h-12 rounded-full bg-white/20 hover:bg-white text-brand-orange hover:text-white transition-all duration-300 relative overflow-hidden group">
-                    <span class="text-xl font-bold z-10">G</span>
-                    <span class="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-3 py-1 bg-white text-brand-dark rounded-full text-sm shadow-md whitespace-nowrap opacity-0 transition-all duration-300 group-hover:left-14 group-hover:opacity-100 group-focus:left-14 group-focus:opacity-100 group-active:left-14 group-active:opacity-100">Galeri</span>
+                <li><a href="#gallery" class="flex items-center justify-center px-4 py-3 rounded-full bg-white/20 hover:bg-white text-brand-orange hover:text-white transition-all duration-300 group">
+                    <span class="text-sm font-semibold">Galeri</span>
                 </a></li>
-                <li><a href="#kontak" class="flex items-center justify-center w-12 h-12 rounded-full bg-white/20 hover:bg-white text-brand-orange hover:text-white transition-all duration-300 relative overflow-hidden group">
-                    <span class="text-xl font-bold z-10">K</span>
-                    <span class="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-3 py-1 bg-white text-brand-dark rounded-full text-sm shadow-md whitespace-nowrap opacity-0 transition-all duration-300 group-hover:left-14 group-hover:opacity-100 group-focus:left-14 group-focus:opacity-100 group-active:left-14 group-active:opacity-100">Kontak</span>
+                <li><a href="#kontak" class="flex items-center justify-center px-4 py-3 rounded-full bg-white/20 hover:bg-white text-brand-orange hover:text-white transition-all duration-300 group">
+                    <span class="text-sm font-semibold">Kontak</span>
                 </a></li>
             </ul>
         </div>
