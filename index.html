@@ -64,6 +64,9 @@
                 background-color: #FF8A00; /* brand-orange */
                 color: white;
             }
+            .active-thumbnail {
+                border-color: #FF8A00; /* brand-orange */
+            }
         }
     </style>
     
@@ -287,19 +290,18 @@
         <section id="gallery" class="py-20">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-12 fade-up-hidden">Galeri</h2>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 fade-up-hidden">
-                        <img src="assets/gal_1.jpg" alt="Zuppa moment" class="w-full h-full object-cover">
+                <div id="gallery-slider" class="relative max-w-3xl mx-auto">
+                    <!-- Main Image Display -->
+                    <div id="main-image-container" class="relative mb-4 h-96 bg-white rounded-2xl shadow-lg overflow-hidden">
+                        <img id="main-image" src="assets/gal_1.jpg" alt="Zuppa moment" class="w-full h-full object-cover transition-opacity duration-500 ease-in-out">
                     </div>
-                    <div class="overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 fade-up-hidden" style="transition-delay: 100ms;">
-                        <img src="assets/gal_2.jpg" alt="Zuppa moment" class="w-full h-full object-cover">
+                    <!-- Thumbnails -->
+                    <div id="thumbnail-track" class="flex justify-center space-x-4">
+                        <img src="assets/gal_1.jpg" alt="Thumbnail 1" class="w-24 h-24 object-cover rounded-xl cursor-pointer border-4 border-transparent hover:border-brand-orange transition-all duration-300 thumbnail active-thumbnail">
+                        <img src="assets/gal_2.jpg" alt="Thumbnail 2" class="w-24 h-24 object-cover rounded-xl cursor-pointer border-4 border-transparent hover:border-brand-orange transition-all duration-300 thumbnail">
+                        <img src="assets/gal_3.jpg" alt="Thumbnail 3" class="w-24 h-24 object-cover rounded-xl cursor-pointer border-4 border-transparent hover:border-brand-orange transition-all duration-300 thumbnail">
+                        <img src="assets/gal_4.jpg" alt="Thumbnail 4" class="w-24 h-24 object-cover rounded-xl cursor-pointer border-4 border-transparent hover:border-brand-orange transition-all duration-300 thumbnail">
                     </div>
-                    <div class="overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 fade-up-hidden" style="transition-delay: 200ms;">
-                        <img src="assets/gal_3.jpg" alt="Zuppa moment" class="w-full h-full object-cover">
-                    </div>
-                    <div class="overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 fade-up-hidden" style="transition-delay: 300ms;">
-                        <img src="assets/gal_4.jpg" alt="Zuppa moment" class="w-full h-full object-cover">
-                    </div>                     
                 </div>
             </div>
         </section>
@@ -474,7 +476,50 @@
             updateCarousel(); // Initial positioning
             startAutoPlay(); // Start the autoplay
 
+            // --- Gallery Slider ---
+            const mainImage = document.getElementById('main-image');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            let galleryAutoPlayInterval;
 
+            function setMainImage(src) {
+                mainImage.style.opacity = 0;
+                setTimeout(() => {
+                    mainImage.src = src;
+                    mainImage.style.opacity = 1;
+                }, 500);
+            }
+
+            thumbnails.forEach((thumbnail, index) => {
+                thumbnail.addEventListener('click', () => {
+                    setMainImage(thumbnail.src);
+                    thumbnails.forEach(thumb => thumb.classList.remove('active-thumbnail'));
+                    thumbnail.classList.add('active-thumbnail');
+                    currentGalleryIndex = index;
+                    stopGalleryAutoPlay();
+                    startGalleryAutoPlay();
+                });
+            });
+
+            let currentGalleryIndex = 0;
+
+            function startGalleryAutoPlay() {
+                galleryAutoPlayInterval = setInterval(() => {
+                    currentGalleryIndex = (currentGalleryIndex + 1) % thumbnails.length;
+                    setMainImage(thumbnails[currentGalleryIndex].src);
+                    thumbnails.forEach(thumb => thumb.classList.remove('active-thumbnail'));
+                    thumbnails[currentGalleryIndex].classList.add('active-thumbnail');
+                }, 3000);
+            }
+
+            function stopGalleryAutoPlay() {
+                clearInterval(galleryAutoPlayInterval);
+            }
+
+            const gallerySlider = document.getElementById('gallery-slider');
+            gallerySlider.addEventListener('mouseenter', stopGalleryAutoPlay);
+            gallerySlider.addEventListener('mouseleave', startGalleryAutoPlay);
+
+            startGalleryAutoPlay();
         });
     </script>
 </body>
